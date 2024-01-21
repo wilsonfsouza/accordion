@@ -1,0 +1,50 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta title="Home" />
+
+# Accordion Code Challenge
+
+The following component was created following the guidelines defined by code challenge.
+
+<details>
+    <summary><u>Guidelines</u></summary>
+    <br/>
+
+### Create React App
+- Create a basic, new React application.
+- Use any framework or build tool you would like (create-react-app, Vite, Next.js, etc).
+
+### Create functional react Accordion
+- Create a new functional React "Accordion" component that displays child components as sections.
+- Each section will be hidden by default with a title that is shown at all times.
+- If the title is clicked on, the section and its contents will toggle between being hidden and showing.
+
+### Make the component reusable and modular
+- The component should be fully reusable and modular so it can take in a dynamic amount of children.
+
+### Only one Section Open
+- Only one section inside the Accordion should be opened at a time.
+- If the user opens a new section, the previous one will close.
+
+### Use the component
+- Use the new component you created and take each bullet point within these directions and use them as the sections inside the Accordion.
+- The main bullet should be the title with each of the sub-bullet points being the contents.
+
+### Make it look nice
+- (extra) Add additional styling and animations to your component to show off your design skills.
+
+</details>
+<br/>
+
+## Technical Decisions
+
+- **Styling**: TailwindCSS
+- **Framework**: Next.js
+- **Component**:
+  - **Type**: Client Component
+  - **Pattern**: Composition Pattern
+  - **Additional Information**:
+    - Used Context API and custom hooks to share and read information between components to avoid prop drilling.
+    - Extended HTML Element attributes of elements used within parent tags to allow components to receive more attributes than set by the component. This allows working with Microdata when creating FAQs.
+    - Added `ARIA` attributes for accessibility
+
