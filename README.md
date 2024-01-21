@@ -61,7 +61,7 @@ $ npm install
 # Start the app in development mode
 $ npm run dev
 
-# The storybook application will open at port:6006 - access http://localhost:6006/?path=/story/home--page
+# The storybook application will open at port:6006
 ```
 
 ---
