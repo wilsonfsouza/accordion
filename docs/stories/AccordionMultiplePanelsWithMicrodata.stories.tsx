@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { AccordionContent } from '../../components/accordion/AccordionContent';
-import { AccordionItem } from '../../components/accordion/AccordionItem';
-import { AccordionRoot, AccordionRootProps } from '../../components/accordion/AccordionRoot';
-import { AccordionTrigger } from '../../components/accordion/AccordionTrigger';
-import { faqs } from '../../components/accordion/mocks/data';
+import { AccordionContent } from '../../src/components/accordion/AccordionContent';
+import { AccordionItem } from '../../src/components/accordion/AccordionItem';
+import { AccordionRoot, AccordionRootProps } from '../../src/components/accordion/AccordionRoot';
+import { AccordionTrigger } from '../../src/components/accordion/AccordionTrigger';
+import { faqs } from '../../src/components/accordion/mocks/data';
 
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: 'Components/Accordion/Multiple Panels/Default',
+  title: 'Components/Accordion/Multiple Panels/With Microdata',
   component: AccordionRoot,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
@@ -40,9 +40,11 @@ const meta = {
   decorators: [
     (Story) => {
       return (
-        <div className="flex flex-col items-center justify-center w-full p-10">
-          {Story()}
-        </div>
+        <section itemScope itemType='https://schema.org/FAQPage'>
+          <div className="flex flex-col items-center justify-center w-full p-10">
+            {Story()}
+          </div>
+        </section>
       )
     }
   ],
@@ -50,15 +52,27 @@ const meta = {
     children: (
       <>
       {faqs.map((item, index) => (
-          <AccordionItem key={item.id} index={`item-${index}`}>
-            <AccordionTrigger>
+          <AccordionItem
+            key={item.id}
+            index={`item-${index}`}
+            itemScope
+            itemProp='mainEntity'
+            itemType='https://schema.org/Question'
+          >
+            <AccordionTrigger itemProp='name'>
               {item.heading}
             </AccordionTrigger>
-            <AccordionContent>
+
+            <AccordionContent
+              itemScope
+              itemProp='acceptedAnswer'
+              itemType='https://schema.org/Answer'
+            >
               <div
                 contentEditable="false"
                 dangerouslySetInnerHTML={{__html: item.content}}
                 className="ml-4 [&>ul]:list-circle"
+                itemProp='text'
               />
             </AccordionContent>
           </AccordionItem>

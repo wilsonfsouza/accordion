@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/react';
 import { themes } from '@storybook/theming';
-import '../.next/static/css/app/layout.css';
+import '../src/styles/globals.css';
 
 const preview: Preview = {
   parameters: {

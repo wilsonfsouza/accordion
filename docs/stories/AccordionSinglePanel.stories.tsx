@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { AccordionContent } from '../../components/accordion/AccordionContent';
-import { AccordionItem } from '../../components/accordion/AccordionItem';
-import { AccordionRoot, AccordionRootProps } from '../../components/accordion/AccordionRoot';
-import { AccordionTrigger } from '../../components/accordion/AccordionTrigger';
-import { faqs } from '../../components/accordion/mocks/data';
+import { AccordionContent } from '../../src/components/accordion/AccordionContent';
+import { AccordionItem } from '../../src/components/accordion/AccordionItem';
+import { AccordionRoot, AccordionRootProps } from '../../src/components/accordion/AccordionRoot';
+import { AccordionTrigger } from '../../src/components/accordion/AccordionTrigger';
+import { faqs } from '../../src/components/accordion/mocks/data';
 
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
