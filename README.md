@@ -35,7 +35,7 @@ This is an accordion component created for a code challenge. I opted to use Reac
 The documentation was deployed on Github pages using a CI/CD pipeline. To see the component, see:
 <br />
 
-<a href="[https://wilsonfsouza.github.io/accordion/?path=/story/home--page](https://wilsonfsouza.github.io/accordion/?path=/docs/home--docs)" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg"></a>
+<a href="https://wilsonfsouza.github.io/accordion/?path=/story/home--page" target="_blank" rel="noopener noreferrer"><img src="https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg"></a>
 
 ---
 
