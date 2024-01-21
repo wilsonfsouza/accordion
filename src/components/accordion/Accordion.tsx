@@ -8,7 +8,7 @@ interface AccordionProps {
   data: IAccordion[]
 }
 
-export const Accordion = ({data}: AccordionProps) => {
+export const Accordion = ({ data }: AccordionProps) => {
   return (
     <div className="flex flex-col items-center justify-center w-full p-10">
       <AccordionRoot>

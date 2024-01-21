@@ -1,22 +1,22 @@
 "use client"
 
 import { ChevronDownIcon } from "lucide-react"
-import { ReactNode } from "react"
+import { HTMLAttributes, ReactNode } from "react"
 import { useAccordion } from "./contexts/AccordionContext"
 import { useAccordionItem } from "./contexts/AccordionItemContext"
 
-interface AccordionTrigger {
+interface AccordionTrigger extends HTMLAttributes<HTMLHeadingElement> {
   as?: 'h3' | 'h4'
   children: ReactNode
 }
 
-export const AccordionTrigger = ({as = 'h3', children}: AccordionTrigger) => {
+export const AccordionTrigger = ({ as = 'h3', children, ...rest }: AccordionTrigger) => {
   const { handleToggleAccordion } = useAccordion()
   const { dataState, index, isOpen } = useAccordionItem()
 
   if (as === 'h4') {
     return (
-      <h4 id={`accordion-trigger-${index}`}>
+      <h4 id={`accordion-trigger-${index}`} {...rest}>
         <button
           type="button"
           className="gap-2 w-full flex flex-1 items-center justify-between py-4 text-sm text-left font-medium transition-all hover:underline [&[aria-expanded=true]>svg]:rotate-180"
@@ -34,7 +34,7 @@ export const AccordionTrigger = ({as = 'h3', children}: AccordionTrigger) => {
   }
 
   return (
-    <h3 id={`accordion-trigger-${index}`}>
+    <h3 id={`accordion-trigger-${index}`} {...rest}>
       <button
         type="button"
         className="gap-2 w-full flex flex-1 items-center justify-between py-4 text-base md:text-lg text-left font-medium transition-all hover:text-pink-500 [&[aria-expanded=true]>svg]:rotate-180 [&[aria-expanded=true]]:text-pink-500"
