@@ -3,12 +3,12 @@
 import { ReactNode, useCallback, useState } from "react"
 import { AccordionContext } from "./contexts/AccordionContext"
 
-interface AccordionRoot {
+export interface AccordionRootProps {
   children: ReactNode
   defaultIndex?: string
 }
 
-export const AccordionRoot  = ({ children, defaultIndex = "" }: AccordionRoot) => {
+export const AccordionRoot  = ({ children, defaultIndex = "" }: AccordionRootProps) => {
   const [openAccordionIndex, setOpenAccordionIndex] = useState(defaultIndex)
 
   const handleToggleAccordion = useCallback((index: string) => {

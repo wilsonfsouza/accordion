@@ -1,0 +1,95 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { AccordionContent } from '../../src/components/accordion/AccordionContent';
+import { AccordionItem } from '../../src/components/accordion/AccordionItem';
+import { AccordionRoot, AccordionRootProps } from '../../src/components/accordion/AccordionRoot';
+import { AccordionTrigger } from '../../src/components/accordion/AccordionTrigger';
+import { faqs } from '../../src/components/accordion/mocks/data';
+
+
+// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
+const meta = {
+  title: 'Components/Accordion/Multiple Panels/With Microdata',
+  component: AccordionRoot,
+  parameters: {
+    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
+    layout: 'centered',
+    theme: {
+      themeOverride: 'dark',
+    },
+    docs: {
+      description: {
+        story:
+          'By default, ONLY one accordion can be opened at a time.',
+      },
+    },
+  },
+  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
+  tags: ['autodocs'],
+  argTypes: {
+    children: {
+      description: "Use Accordion sub components (`<AccordionItem />`, `<AccordionTrigger />`, and `<AccordionContent />`) to create each accordion **within** an accordion group.",
+      control: {
+        type: null,
+      },
+    },
+    defaultIndex: {
+      description: "Use this field to set the index of the accordion you want to start always **open**. This field is a combination of `item-<number>`.",
+      type: "string"
+    }
+  },
+  decorators: [
+    (Story) => {
+      return (
+        <section itemScope itemType='https://schema.org/FAQPage'>
+          <div className="flex flex-col items-center justify-center w-full p-10">
+            {Story()}
+          </div>
+        </section>
+      )
+    }
+  ],
+  args: {
+    children: (
+      <>
+      {faqs.map((item, index) => (
+          <AccordionItem
+            key={item.id}
+            index={`item-${index}`}
+            itemScope
+            itemProp='mainEntity'
+            itemType='https://schema.org/Question'
+          >
+            <AccordionTrigger itemProp='name'>
+              {item.heading}
+            </AccordionTrigger>
+
+            <AccordionContent
+              itemScope
+              itemProp='acceptedAnswer'
+              itemType='https://schema.org/Answer'
+            >
+              <div
+                contentEditable="false"
+                dangerouslySetInnerHTML={{__html: item.content}}
+                className="ml-4 [&>ul]:list-circle"
+                itemProp='text'
+              />
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </>
+    )
+  }
+} satisfies Meta<AccordionRootProps>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
+export const AllAccordionsStartClosed: Story = {};
+
+export const FirstAccordionStartsOpened: Story = {
+  args: {
+    defaultIndex: "item-0"
+  },
+};
